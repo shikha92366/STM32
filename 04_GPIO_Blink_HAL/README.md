@@ -103,6 +103,9 @@ PA5 is now configured as a GPIO output for controlling the onboard LD2 LED.
 
 ## Adding a User Label
 
+<img width="1077" height="676" alt="Screenshot 2026-09-08 230714" src="https://github.com/user-attachments/assets/bbcd31cb-0600-41e4-bec0-650020ad8287" />
+
+
 To make the generated code easier to understand, assign a user label to PA5.
 
 Right-click on **PA5** and select:
