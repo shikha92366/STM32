@@ -1,4 +1,5 @@
 # STM32 Documentation
+<img width="791" height="137" alt="documentation proof" src="https://github.com/user-attachments/assets/f99ff7b6-f416-4718-b0c3-630f881d3624" />
 
 This section contains the essential documentation required for
 understanding and developing applications for the STM32F401RE
