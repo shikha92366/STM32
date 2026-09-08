@@ -32,8 +32,7 @@ For Windows, select the latest available version.
 7. Launch STM32CubeIDE.
 
 ## Download Page
-
-![STM32CubeIDE Download](../../images/stm32cubeide-download.png)
+<img width="1917" height="583" alt="stm32cubeide_software installation" src="https://github.com/user-attachments/assets/7c80f71c-46ca-4af2-8423-57d7a9a422a3" /> 
 
 ## Verification
 
