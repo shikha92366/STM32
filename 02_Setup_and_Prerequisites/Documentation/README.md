@@ -97,10 +97,22 @@ It contains information about:
 
 ## Recommended Reading Order
 
-STM32F401xD/E Datasheet
-          ↓
-STM32F4 Reference Manual (RM0368)
-          ↓
-NUCLEO-F401RE User Manual (UM1724)
-          ↓
-STM32 Peripheral Programming
+Follow the documentation in this order:
+
+### 1. STM32F401xD/E Datasheet
+Understand the MCU specifications, pinout, memory, peripherals, and electrical characteristics.
+
+⬇️
+
+### 2. STM32F4 Reference Manual (RM0368)
+Understand how the peripherals work and how they are configured through registers.
+
+⬇️
+
+### 3. NUCLEO-F401RE User Manual (UM1724)
+Understand the development board, ST-LINK, connectors, power, LEDs, buttons, and pin connections.
+
+⬇️
+
+### 4. STM32 Peripheral Programming
+Apply the information from the above documents while programming STM32 peripherals.
