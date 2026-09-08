@@ -79,6 +79,8 @@ Keep the remaining project settings at their default values unless required othe
 
 # GPIO Configuration
 
+<img width="631" height="422" alt="Screenshot 2026-09-08 230455" src="https://github.com/user-attachments/assets/09c7a275-509b-4b72-9861-b6cc0f279df3" />
+
 After creating the project, open the `.ioc` configuration file.
 
 The MCU pinout will be displayed.
