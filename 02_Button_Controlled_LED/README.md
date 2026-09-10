@@ -798,7 +798,3 @@ Topics to learn next:
 * STM32 HAL GPIO Documentation
 * STM32CubeIDE Documentation
 
-```
-
-This is the version I'd use for your **actual learning repo**. It keeps the project self-contained in one README while clearly showing your progression from **concept → configuration → implementation → understanding → hardware result → next STM32 concept**.
-```
