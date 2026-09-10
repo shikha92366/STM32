@@ -1,9 +1,5 @@
 
 
-02_Button_Controlled_LED_HAL
-```
-
-````markdown
 # 🔘 Button Controlled LED using STM32 HAL
 
 > A beginner STM32 GPIO project demonstrating how to read a digital input
