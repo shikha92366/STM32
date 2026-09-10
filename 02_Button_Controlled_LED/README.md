@@ -1,3 +1,4 @@
+
 # 🔘 Button Controlled LED using STM32 HAL
 
 A beginner-friendly STM32 project demonstrating how to use **GPIO Input and GPIO Output** with the **STM32 HAL (Hardware Abstraction Layer)**.
@@ -47,6 +48,7 @@ LED    → GPIO Output
 ---
 
 # ⚙️ 2. STM32CubeIDE Configuration
+<img width="756" height="545" alt="confi" src="https://github.com/user-attachments/assets/e8e28c46-0d8e-46cb-b086-2ce2a1ff7dc3" />
 
 Create an STM32 project for the **STM32F401RE / NUCLEO-F401RE** board.
 
