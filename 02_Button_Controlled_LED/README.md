@@ -1,4 +1,6 @@
 
+
+```text
 02_Button_Controlled_LED_HAL
 ```
 
@@ -972,3 +974,21 @@ The goal is to understand:
 * STM32 NUCLEO-F401RE User Manual
 * STM32 HAL GPIO Documentation
 * STM32CubeIDE Documentation
+
+````
+
+### One thing to remember
+
+Your **actual code** is:
+
+```c
+if (HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO_Port, BLUE_BUTTON_Pin))
+````
+
+and not:
+
+```c
+if (HAL_GPIO_ReadPin(...) == GPIO_PIN_SET)
+```
+
+I've explained the exact reason for that in the README under **“Why the `if` works without `== GPIO_PIN_SET`”**. That is worth keeping because it demonstrates that you're learning **C behavior + STM32 HAL**, rather than simply copying HAL code.
