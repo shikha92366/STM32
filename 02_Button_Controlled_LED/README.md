@@ -1,3 +1,4 @@
+<img width="756" height="545" alt="confi" src="https://github.com/user-attachments/assets/a32b191e-ba47-4542-aa30-1b97ef2c3f57" />
 
 # 🔘 Button Controlled LED using STM32 HAL
 
@@ -106,19 +107,7 @@ The objective of this project is to learn:
 
 ## 📍 Pin Mapping
 
-```text
-              STM32F401RE
-           ┌───────────────┐
-           │               │
-B1 Button ─┤ PC13          │
-           │               │
-           │               │
-           │          PA5 ─┼────► LD2 LED
-           │               │
-           └───────────────┘
-```
-
----
+<img width="756" height="545" alt="confi" src="https://github.com/user-attachments/assets/a32b191e-ba47-4542-aa30-1b97ef2c3f57" />
 
 ## 🧩 STM32CubeMX Configuration
 
