@@ -688,7 +688,10 @@ CAN
 
 ## Expected Result
 
-https://github.com/user-attachments/assets/eaabc6ad-7fbc-46f0-8d5f-d632f2f5f66c
+
+https://github.com/user-attachments/assets/9e41ba62-3f8b-4fcd-8725-2b8559ab2801
+
+
 
 After building and programming the STM32F401RE, the onboard **LD2 green user LED** should blink approximately every **500 ms**.
 
