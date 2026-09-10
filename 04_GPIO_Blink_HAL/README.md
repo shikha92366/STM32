@@ -1,5 +1,9 @@
 
 # 🟢 STM32 GPIO LED Blink — HAL
+ **My first STM32 HAL project — controlling the onboard user LED using GPIO.**
+
+A beginner-friendly STM32 project demonstrating how to configure a GPIO pin using **STM32CubeIDE / CubeMX** and control the onboard **LD2 user LED** of the **NUCLEO-F401RE** using the STM32 **Hardware Abstraction Layer (HAL)**.
+
 
 
 ## Overview
