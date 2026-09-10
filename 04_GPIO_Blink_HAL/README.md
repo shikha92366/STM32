@@ -1,5 +1,7 @@
 
 
+
+
 ## Overview
 
 This project demonstrates how to blink the onboard user LED of the **NUCLEO-F401RE** using the **STM32 HAL (Hardware Abstraction Layer)**.
@@ -685,6 +687,8 @@ CAN
 ---
 
 ## Expected Result
+
+https://github.com/user-attachments/assets/eaabc6ad-7fbc-46f0-8d5f-d632f2f5f66c
 
 After building and programming the STM32F401RE, the onboard **LD2 green user LED** should blink approximately every **500 ms**.
 
