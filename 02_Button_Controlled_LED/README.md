@@ -1,6 +1,5 @@
 
 
-```text
 02_Button_Controlled_LED_HAL
 ```
 
@@ -27,7 +26,6 @@ A GPIO pin can be configured as either:
 
 In this project:
 
-```text
 🔵 Blue User Button → GPIO Input
 🟢 Green LED        → GPIO Output
 ````
