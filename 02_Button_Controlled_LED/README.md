@@ -1,188 +1,82 @@
-
-
 # 🔘 Button Controlled LED using STM32 HAL
 
-> A beginner STM32 GPIO project demonstrating how to read a digital input
-> from a push button and control an LED using the STM32 HAL library.
+A beginner-friendly STM32 project demonstrating how to use **GPIO Input and GPIO Output** with the **STM32 HAL (Hardware Abstraction Layer)**.
+
+In this project, the onboard **blue user button** is used as an input, and the onboard **green LED** is controlled as an output.
+
+The project helps understand:
+
+* GPIO input
+* GPIO output
+* `HAL_GPIO_ReadPin()`
+* `HAL_GPIO_WritePin()`
+* `GPIO_PIN_SET`
+* `GPIO_PIN_RESET`
+* `GPIO_PinState`
+* `if-else` logic
+* Active-low button input
+* Polling using `while(1)`
 
 ---
 
-# 📚 1. Concept
+## 📚 1. Concept
 
-## GPIO Input and GPIO Output
+### What is GPIO?
 
-GPIO stands for:
+**GPIO** stands for **General Purpose Input/Output**.
 
-**General Purpose Input/Output**
+A GPIO pin can generally be configured as:
 
-A GPIO pin can be configured as either:
-
-- **Input** → to read a signal
-- **Output** → to generate/control a signal
+* **Input** → read a signal from a button/sensor
+* **Output** → control an LED, relay, etc.
 
 In this project:
 
-🔵 Blue User Button → GPIO Input
-🟢 Green LED        → GPIO Output
-````
+```text
+Button → GPIO Input
+LED    → GPIO Output
+```
 
-The STM32 continuously reads the state of the blue button and controls the
-green LED according to the value read from the GPIO pin.
+### Hardware Used
+
+| Component           | Pin  | Configuration | Label         |
+| ------------------- | ---- | ------------- | ------------- |
+| 🔘 Blue User Button | PC13 | GPIO Input    | `BLUE_BUTTON` |
+| 🟢 Green LED (LD2)  | PA5  | GPIO Output   | `MY_LED`      |
 
 ---
 
-## 🎯 Objective
+# ⚙️ 2. STM32CubeIDE Configuration
 
-The main objective of this project is to understand:
+Create an STM32 project for the **STM32F401RE / NUCLEO-F401RE** board.
 
-* GPIO input configuration
-* GPIO output configuration
-* Reading a GPIO pin using STM32 HAL
-* Writing to a GPIO pin using STM32 HAL
-* `GPIO_PinState`
-* `GPIO_PIN_SET`
-* `GPIO_PIN_RESET`
-* `if-else` logic in embedded C
-* Polling a GPIO input
-* Basic input-output interfacing
+Configure the GPIO pins as follows:
 
----
-
-## 🔄 Basic Embedded System Flow
+### LED — PA5
 
 ```text
-        INPUT
-          │
-          ▼
-    🔵 Push Button
-          │
-          ▼
-        PC13
-          │
-          ▼
-      STM32 MCU
-          │
-          ▼
-        PA5
-          │
-          ▼
-     🟢 Green LED
-        OUTPUT
+PA5
+Mode: GPIO Output
+User Label: MY_LED
 ```
 
-The basic pattern is:
+### Button — PC13
 
 ```text
-Read Input
-    ↓
-Process / Make Decision
-    ↓
-Control Output
+PC13
+Mode: GPIO Input
+User Label: BLUE_BUTTON
 ```
 
----
+After configuring the pins, generate the project.
 
-# ⚙️ 2. Configuration
-
-## 🛠️ Hardware Used
-
-| Component           | Details                       |
-| ------------------- | ----------------------------- |
-| Development Board   | STM32 NUCLEO-F401RE           |
-| Microcontroller     | STM32F401RE                   |
-| LED                 | LD2 – Onboard Green LED       |
-| Push Button         | B1 – Onboard Blue User Button |
-| Programmer/Debugger | ST-LINK                       |
-| IDE                 | STM32CubeIDE                  |
-
----
-
-## 🔌 GPIO Pin Configuration
-
-| Device         | STM32 Pin | Configuration | User Label    |
-| -------------- | --------- | ------------- | ------------- |
-| LD2 Green LED  | PA5       | GPIO Output   | `MY_LED`      |
-| B1 Blue Button | PC13      | GPIO Input    | `BLUE_BUTTON` |
-
----
-
-## 📍 Pin Mapping
-
-```text
-                STM32F401RE
-             ┌──────────────┐
-             │              │
-🔵 B1 Button ─────► PC13    │
-             │              │
-             │              │
-             │       PA5 ───────► 🟢 LD2 LED
-             │              │
-             └──────────────┘
-```
-
----
-
-## STM32CubeMX Configuration
-
-### LED
-
-Configure:
-
-```text
-PA5 → GPIO_Output
-```
-
-User Label:
-
-```text
-MY_LED
-```
-
----
-
-### Blue Button
-
-Configure:
-
-```text
-PC13 → GPIO_Input
-```
-
-User Label:
-
-```text
-BLUE_BUTTON
-```
-
----
-
-## Configuration Flow
-
-```text
-Create STM32 Project
-        ↓
-Select STM32F401RE
-        ↓
-Configure PA5
-        ↓
-PA5 → GPIO Output
-        ↓
-Configure PC13
-        ↓
-PC13 → GPIO Input
-        ↓
-Add User Labels
-        ↓
-Generate Code
-```
+STM32CubeIDE will generate the required GPIO initialization code automatically.
 
 ---
 
 # 💻 3. Code
 
-## Main Application Code
-
-The GPIO logic is placed inside the infinite `while(1)` loop.
+The main logic is placed inside the `while(1)` loop:
 
 ```c
 while (1)
@@ -200,56 +94,39 @@ while (1)
 
 ---
 
-# 🧠 4. Explanation
+# 🧠 4. Understanding the Code
 
-## 4.1 `while(1)`
-
-```c
-while (1)
-```
-
-The `while(1)` loop runs continuously.
-
-The STM32 repeatedly:
-
-```text
-Read Button
-    ↓
-Check Button State
-    ↓
-Control LED
-    ↓
-Repeat
-```
-
-This means the button is being checked continuously.
-
-This method of repeatedly checking an input is called **polling**.
-
----
-
-# 4.2 `HAL_GPIO_ReadPin()`
-
-The button is read using:
+## `HAL_GPIO_ReadPin()`
 
 ```c
 HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO_Port, BLUE_BUTTON_Pin)
 ```
 
-The function returns a value of type:
+This function **reads the current electrical state of the button pin PC13**.
+
+It returns a `GPIO_PinState`.
+
+The possible values are:
 
 ```c
-GPIO_PinState
+GPIO_PIN_RESET = 0
+GPIO_PIN_SET   = 1
 ```
 
-The GPIO pin state can be:
+So:
 
 ```text
-GPIO_PIN_RESET
-GPIO_PIN_SET
+0 → LOW
+1 → HIGH
 ```
 
-The HAL defines `GPIO_PinState` using an enum similar to:
+---
+
+## `GPIO_PinState`
+
+`GPIO_PinState` is the type used by STM32 HAL to represent the state of a GPIO pin.
+
+The enum is:
 
 ```c
 typedef enum
@@ -262,167 +139,139 @@ typedef enum
 Therefore:
 
 ```text
-GPIO_PIN_RESET → 0
-GPIO_PIN_SET   → 1
+GPIO_PIN_RESET → 0 → LOW
+GPIO_PIN_SET   → 1 → HIGH
 ```
+
+### Important
+
+`GPIO_PIN_SET` and `GPIO_PIN_RESET` describe the **electrical state of a GPIO pin**.
+
+They do **not automatically mean**:
+
+```text
+SET   = Button Pressed
+RESET = Button Released
+```
+
+The actual meaning depends on how the hardware is connected.
 
 ---
 
-# 4.3 Why the `if` works without `== GPIO_PIN_SET`
+# 🔘 5. What Happens When the Button is Pressed?
 
-The code uses:
+The onboard blue button is connected to **PC13**.
 
-```c
-if (HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO_Port, BLUE_BUTTON_Pin))
-```
-
-instead of:
-
-```c
-if (HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO_Port, BLUE_BUTTON_Pin)
-    == GPIO_PIN_SET)
-```
-
-Both approaches can be used here.
-
-The reason the first version works is because of how C evaluates values
-inside an `if` statement.
-
-In C:
+When the button is **not pressed**, PC13 is HIGH:
 
 ```text
-0       → FALSE
-Non-zero → TRUE
+Not Pressed → PC13 = 1 → GPIO_PIN_SET
 ```
 
-Since:
+When the button is **pressed**, the button connects PC13 to **GND**.
+
+Since GND is **0 V**, PC13 becomes LOW:
 
 ```text
-GPIO_PIN_RESET = 0
-GPIO_PIN_SET   = 1
+Pressed → PC13 = 0 → GPIO_PIN_RESET
 ```
 
-the following happens:
+Therefore:
 
 ```text
-HAL_GPIO_ReadPin()
-        │
-        ├── GPIO_PIN_SET (1)
-        │       ↓
-        │     TRUE
-        │       ↓
-        │      IF
-        │
-        └── GPIO_PIN_RESET (0)
+Not Pressed → PC13 = 1
+Pressed     → PC13 = 0
+```
+
+This is called an **active-low input**.
+
+> **The button does not "produce 0". Pressing the button connects PC13 to GND, and GND is 0 V.**
+
+---
+
+# 🔄 6. Complete Program Flow
+
+When the button is pressed:
+
+```text
+        🔘 BUTTON PRESSED
                 ↓
-              FALSE
+            PC13 = 0
                 ↓
-               ELSE
+     HAL_GPIO_ReadPin() reads 0
+                ↓
+           if(0) → FALSE
+                ↓
+            else runs
+                ↓
+     GPIO_PIN_SET is written to PA5
+                ↓
+             PA5 = 1
+                ↓
+          🟢 LED turns ON
 ```
 
----
-
-# 4.4 Understanding the `if` Block
-
-The code is:
-
-```c
-if (HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO_Port, BLUE_BUTTON_Pin))
-{
-    HAL_GPIO_WritePin(MY_LED_GPIO_Port, MY_LED_Pin, GPIO_PIN_RESET);
-}
-```
-
-If the button reading is non-zero:
+When the button is released:
 
 ```text
-Button State
-     ↓
-GPIO_PIN_SET
-     ↓
-1
-     ↓
-TRUE
-     ↓
-IF block executes
-     ↓
-LED = GPIO_PIN_RESET
+       🔘 BUTTON RELEASED
+                ↓
+            PC13 = 1
+                ↓
+     HAL_GPIO_ReadPin() reads 1
+                ↓
+           if(1) → TRUE
+                ↓
+       GPIO_PIN_RESET written to PA5
+                ↓
+             PA5 = 0
+                ↓
+          🟢 LED turns OFF
 ```
 
-So the LED is written with:
+### In short:
 
-```c
-GPIO_PIN_RESET
-```
-
----
-
-# 4.5 Understanding the `else` Block
-
-The code is:
-
-```c
+```text
+Pressed
+   ↓
+PC13 = 0
+   ↓
 else
-{
-    HAL_GPIO_WritePin(MY_LED_GPIO_Port, MY_LED_Pin, GPIO_PIN_SET);
-}
+   ↓
+PA5 = 1
+   ↓
+LED ON
 ```
-
-If the button reading is zero:
 
 ```text
-Button State
-     ↓
-GPIO_PIN_RESET
-     ↓
-0
-     ↓
-FALSE
-     ↓
-ELSE block executes
-     ↓
-LED = GPIO_PIN_SET
+Released
+   ↓
+PC13 = 1
+   ↓
+if
+   ↓
+PA5 = 0
+   ↓
+LED OFF
 ```
 
-So the LED is written with:
+---
+
+# 🔌 7. `HAL_GPIO_WritePin()`
+
+This function controls the output GPIO pin.
 
 ```c
-GPIO_PIN_SET
+HAL_GPIO_WritePin(MY_LED_GPIO_Port,
+                  MY_LED_Pin,
+                  GPIO_PIN_SET);
 ```
 
----
+It means:
 
-# 4.6 Complete Logic
+> Set the LED GPIO pin to HIGH.
 
-Your program therefore follows this logic:
-
-```text
-                 Read PC13
-                     │
-                     ▼
-              Is value non-zero?
-                /           \
-              YES            NO
-               │              │
-               ▼              ▼
-        LED = RESET      LED = SET
-               │              │
-               ▼              ▼
-            LED OFF          LED ON
-```
-
-In table form:
-
-| Button GPIO State    | C `if` Result | LED Output       | LED |
-| -------------------- | ------------- | ---------------- | --- |
-| `GPIO_PIN_SET` (1)   | TRUE          | `GPIO_PIN_RESET` | OFF |
-| `GPIO_PIN_RESET` (0) | FALSE         | `GPIO_PIN_SET`   | ON  |
-
----
-
-# 4.7 `HAL_GPIO_WritePin()`
-
-The LED is controlled using:
+And:
 
 ```c
 HAL_GPIO_WritePin(MY_LED_GPIO_Port,
@@ -430,559 +279,300 @@ HAL_GPIO_WritePin(MY_LED_GPIO_Port,
                   GPIO_PIN_RESET);
 ```
 
-The function takes three important arguments:
+means:
+
+> Set the LED GPIO pin to LOW.
+
+### Notice the difference
+
+`HAL_GPIO_ReadPin()` → **READS the button**
+
+`HAL_GPIO_WritePin()` → **WRITES to the LED**
 
 ```text
-HAL_GPIO_WritePin(
-        GPIO Port,
-        GPIO Pin,
-        Pin State
-);
-```
-
----
-
-## First Argument – GPIO Port
-
-```c
-MY_LED_GPIO_Port
-```
-
-This tells HAL which GPIO port contains the LED.
-
-For PA5, this corresponds to:
-
-```text
-GPIOA
-```
-
----
-
-## Second Argument – GPIO Pin
-
-```c
-MY_LED_Pin
-```
-
-This identifies the particular GPIO pin.
-
-For the onboard LED:
-
-```text
-PA5
-```
-
----
-
-## Third Argument – Pin State
-
-The third argument specifies the state to write:
-
-```c
-GPIO_PIN_SET
-```
-
-or:
-
-```c
-GPIO_PIN_RESET
-```
-
----
-
-# 4.8 `GPIO_PinState`
-
-`GPIO_PinState` is a type defined using an enumeration.
-
-Conceptually:
-
-```c
-typedef enum
-{
-    GPIO_PIN_RESET = 0U,
-    GPIO_PIN_SET
-} GPIO_PinState;
-```
-
-So:
-
-```text
-GPIO_PinState
-      │
-      ├── GPIO_PIN_RESET
-      │       = 0
-      │
-      └── GPIO_PIN_SET
-              = 1
-```
-
-This is why the same values can be used both when reading and writing
-GPIO states.
-
----
-
-# 4.9 Read vs Write
-
-The two main HAL functions used in this project have different jobs.
-
-### Reading the Button
-
-```c
-HAL_GPIO_ReadPin(
-    BLUE_BUTTON_GPIO_Port,
-    BLUE_BUTTON_Pin
-);
-```
-
-Meaning:
-
-```text
-"Tell me the current state of this pin."
-```
-
----
-
-### Controlling the LED
-
-```c
-HAL_GPIO_WritePin(
-    MY_LED_GPIO_Port,
-    MY_LED_Pin,
-    GPIO_PIN_SET
-);
-```
-
-Meaning:
-
-```text
-"Set this output pin."
-```
-
----
-
-# 4.10 Complete Input → Output Relationship
-
-```text
-          BUTTON
-            │
-            ▼
-           PC13
-            │
-            ▼
-  HAL_GPIO_ReadPin()
-            │
-            ▼
-      GPIO_PinState
-            │
-       ┌────┴────┐
-       │         │
-      SET      RESET
-       │         │
-       ▼         ▼
-      TRUE      FALSE
-       │         │
-       ▼         ▼
- LED = RESET  LED = SET
-       │         │
-       ▼         ▼
-    LED OFF    LED ON
-```
-
----
-
-# 🧪 5. Result
-
-After building and flashing the program to the STM32 NUCLEO-F401RE:
-
-```text
-Button State → LED Response
-```
-
-The program continuously reads the button and updates the LED.
-
-### When the GPIO reads `GPIO_PIN_SET`
-
-```text
+BUTTON
+  ↓
 PC13
- ↓
-GPIO_PIN_SET
- ↓
-if = TRUE
- ↓
-PA5 = GPIO_PIN_RESET
- ↓
-LED OFF
-```
-
-### When the GPIO reads `GPIO_PIN_RESET`
-
-```text
-PC13
- ↓
-GPIO_PIN_RESET
- ↓
-if = FALSE
- ↓
-PA5 = GPIO_PIN_SET
- ↓
-LED ON
-```
-
----
-
-# 🧠 6. Key Learning
-
-This project introduced the basic **GPIO input-output relationship**.
-
-The important pattern is:
-
-```text
-INPUT
   ↓
 READ
   ↓
-PROCESS
+if / else
   ↓
 WRITE
-  ↓
-OUTPUT
-```
-
-In this project:
-
-```text
-Button
-  ↓
-PC13
-  ↓
-HAL_GPIO_ReadPin()
-  ↓
-GPIO_PinState
-  ↓
-if-else
-  ↓
-HAL_GPIO_WritePin()
   ↓
 PA5
   ↓
 LED
 ```
 
+We are **not resetting the button**.
+
+We are setting/resetting the **LED pin** depending on the button state.
+
 ---
 
-## Important C Concept Learned
+# 🧩 8. Why Does `if()` Work Here?
 
-The following:
+The code is:
 
 ```c
-if (HAL_GPIO_ReadPin(...))
+if (HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO_Port, BLUE_BUTTON_Pin))
 ```
 
-works because C evaluates:
+The function returns either:
+
+```text
+GPIO_PIN_RESET → 0
+GPIO_PIN_SET   → 1
+```
+
+In C:
 
 ```text
 0       → FALSE
 non-zero → TRUE
 ```
 
-Since:
-
-```text
-GPIO_PIN_RESET = 0
-GPIO_PIN_SET   = 1
-```
-
-the returned GPIO state can directly be used as the condition.
-
----
-
-## Important HAL Concepts Learned
-
-### Read GPIO
+Therefore:
 
 ```c
-HAL_GPIO_ReadPin();
+if (1)
 ```
 
-### Write GPIO
+is true.
+
+And:
 
 ```c
-HAL_GPIO_WritePin();
+if (0)
 ```
 
-### GPIO State
+is false.
+
+So the code can be understood as:
 
 ```c
-GPIO_PIN_SET
-GPIO_PIN_RESET
-```
-
-### GPIO State Type
-
-```c
-GPIO_PinState
+if (button_state == 1)
+{
+    // LED LOW
+}
+else
+{
+    // LED HIGH
+}
 ```
 
 ---
 
-# 📌 7. HAL vs Bare Metal
+# 🔁 9. Why `while(1)`?
 
-In this project, GPIO is controlled through the STM32 HAL.
-
-```text
-Application Code
-       ↓
-STM32 HAL API
-       ↓
-HAL GPIO Driver
-       ↓
-GPIO Registers
-       ↓
-STM32 Hardware
-```
-
-For example:
+The code is inside:
 
 ```c
-HAL_GPIO_ReadPin();
-```
-
-hides the direct register-level operations from the application.
-
-Similarly:
-
-```c
-HAL_GPIO_WritePin();
-```
-
-provides an abstraction for controlling the GPIO hardware.
-
----
-
-# 🛡️ 8. USER CODE Sections
-
-STM32CubeMX generates a large portion of the STM32 project automatically.
-
-Custom application code should be placed inside the appropriate USER CODE
-sections.
-
-For example:
-
-```c
-/* USER CODE BEGIN WHILE */
-
 while (1)
 {
-    if (HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO_Port, BLUE_BUTTON_Pin))
-    {
-        HAL_GPIO_WritePin(MY_LED_GPIO_Port, MY_LED_Pin, GPIO_PIN_RESET);
-    }
-    else
-    {
-        HAL_GPIO_WritePin(MY_LED_GPIO_Port, MY_LED_Pin, GPIO_PIN_SET);
-    }
+    ...
 }
-
-/* USER CODE END WHILE */
 ```
 
-Using the USER CODE sections helps protect custom code when STM32CubeMX
-regenerates the project.
+`1` is always true, so the loop runs continuously.
 
----
-
-# 📂 9. Project Structure
+The STM32 repeatedly checks the button:
 
 ```text
-02_Button_Controlled_LED_HAL/
-│
-├── README.md
-│
-└── STM32_Project/
-    │
-    ├── Core/
-    │   ├── Inc/
-    │   │   └── main.h
-    │   │
-    │   └── Src/
-    │       └── main.c
-    │
-    ├── Drivers/
-    │
-    └── STM32_Project.ioc
-```
-
-### Important Files
-
-| File/Folder | Purpose                       |
-| ----------- | ----------------------------- |
-| `main.c`    | Main application logic        |
-| `main.h`    | GPIO pin and port definitions |
-| `.ioc`      | STM32CubeMX configuration     |
-| `Drivers/`  | HAL and CMSIS drivers         |
-
----
-
-# 🚀 10. How to Run
-
-1. Open the project in STM32CubeIDE.
-2. Open the `.ioc` file.
-3. Configure PA5 as `GPIO_Output`.
-4. Configure PC13 as `GPIO_Input`.
-5. Set the appropriate user labels.
-6. Generate the code.
-7. Add the application logic inside the USER CODE section.
-8. Build the project.
-9. Connect the NUCLEO-F401RE through USB.
-10. Flash the program using ST-LINK.
-11. Observe the LED while changing the button state.
-
----
-
-# 📌 11. Project Summary
-
-| Category        | Details                          |
-| --------------- | -------------------------------- |
-| Board           | STM32 NUCLEO-F401RE              |
-| MCU             | STM32F401RE                      |
-| Language        | Embedded C                       |
-| Framework       | STM32 HAL                        |
-| Input           | B1 Blue User Button              |
-| Input Pin       | PC13                             |
-| Output          | LD2 Green LED                    |
-| Output Pin      | PA5                              |
-| GPIO Input API  | `HAL_GPIO_ReadPin()`             |
-| GPIO Output API | `HAL_GPIO_WritePin()`            |
-| GPIO State Type | `GPIO_PinState`                  |
-| GPIO States     | `GPIO_PIN_SET`, `GPIO_PIN_RESET` |
-| Input Method    | Polling                          |
-
----
-
-# 📖 12. What I Learned
-
-From this project, I learned how to:
-
-* Configure a GPIO as an input.
-* Configure a GPIO as an output.
-* Read the state of a button using HAL.
-* Control an LED using HAL.
-* Understand `GPIO_PinState`.
-* Understand `GPIO_PIN_SET` and `GPIO_PIN_RESET`.
-* Use GPIO state directly inside an `if` condition.
-* Understand the relationship between `0`/`1` and `FALSE`/`TRUE` in C.
-* Implement basic GPIO polling.
-* Understand the Input → Process → Output model.
-
----
-
-# ➡️ 13. Next Concept
-
-## Bare-Metal / Register-Level GPIO
-
-The next step is to implement the same GPIO functionality **without using
-the HAL GPIO APIs**.
-
-Currently:
-
-```text
-Application
+READ BUTTON
      ↓
+CHECK STATE
+     ↓
+CONTROL LED
+     ↓
+READ BUTTON AGAIN
+     ↓
+CHECK STATE
+     ↓
+CONTROL LED
+     ↓
+...
+```
+
+This method of continuously checking the input is called **polling**.
+
+---
+
+# 🧪 10. Expected Result
+
+### Button Released
+
+```text
+PC13 = 1
+PA5  = 0
+LED  = OFF
+```
+
+### Button Pressed
+
+```text
+PC13 = 0
+PA5  = 1
+LED  = ON
+```
+
+Therefore, the LED follows the button state:
+
+```text
+🔘 Released → 🟢 LED OFF
+
+🔘 Pressed  → 🟢 LED ON
+```
+
+---
+
+# 📝 11. Key Takeaways
+
+### GPIO
+
+GPIO allows the microcontroller to interact with external hardware.
+
+### Input
+
+The button is configured as an input because the STM32 needs to **read** its state.
+
+### Output
+
+The LED is configured as an output because the STM32 needs to **control** it.
+
+### HAL GPIO Functions
+
+```c
+HAL_GPIO_ReadPin()
+```
+
+→ Reads a GPIO pin.
+
+```c
+HAL_GPIO_WritePin()
+```
+
+→ Sets or resets a GPIO output pin.
+
+### GPIO States
+
+```text
+GPIO_PIN_RESET = 0 = LOW
+GPIO_PIN_SET   = 1 = HIGH
+```
+
+### Active-Low Input
+
+For this button:
+
+```text
+Pressed     → 0
+Not Pressed → 1
+```
+
+### Main Concept
+
+> **Read the button → make a decision → control the LED.**
+
+---
+
+# 📂 12. Project Structure
+
+A typical STM32CubeIDE project contains:
+
+```text
+Button_Controlled_LED/
+│
+├── Core/
+│   ├── Inc/
+│   │   ├── main.h
+│   │   └── stm32f4xx_it.h
+│   │
+│   └── Src/
+│       ├── main.c
+│       ├── stm32f4xx_it.c
+│       └── system_stm32f4xx.c
+│
+├── Drivers/
+│   └── STM32F4xx_HAL_Driver/
+│
+├── Button_Controlled_LED.ioc
+└── README.md
+```
+
+---
+
+# 🎯 13. What I Learned
+
+Through this project, I learned how to:
+
+* Configure GPIO input using STM32CubeIDE
+* Configure GPIO output using STM32CubeIDE
+* Read a button using `HAL_GPIO_ReadPin()`
+* Control an LED using `HAL_GPIO_WritePin()`
+* Understand `GPIO_PinState`
+* Understand `GPIO_PIN_SET` and `GPIO_PIN_RESET`
+* Understand HIGH and LOW
+* Understand active-low inputs
+* Use `if-else` with GPIO states
+* Continuously monitor an input using polling
+
+---
+
+# ➡️ 14. Next Concept
+
+After understanding GPIO using HAL, the next step is to understand **GPIO at the register level (Bare-Metal Programming)**.
+
+Instead of:
+
+```c
 HAL_GPIO_ReadPin()
 HAL_GPIO_WritePin()
-     ↓
-HAL Driver
-     ↓
-GPIO Registers
-     ↓
-Hardware
 ```
 
-Next:
+we will learn how the STM32 GPIO registers themselves work.
+
+### Learning Path
 
 ```text
-Application
-     ↓
-GPIO Registers
-     ↓
-Hardware
-```
-
-The next project will focus on understanding the GPIO registers directly.
-
-### Topics to Learn
-
-* GPIO registers
-* GPIO port registers
-* GPIO mode configuration
-* Input Data Register
-* Output Data Register
-* Register-level bit manipulation
-* Reading GPIO registers
-* Writing GPIO registers
-* HAL vs Bare-Metal programming
-
----
-
-## 🔜 Next Project
-
-```text
-03_Button_Controlled_LED_Bare_Metal
-```
-
-The goal is not just to make the LED work again.
-
-The goal is to understand:
-
-> **What is actually happening inside the STM32 when a GPIO pin is read and
-> written?**
-
----
-
-# 📈 STM32 Learning Progress
-
-```text
-[✓] GPIO Output – LED Blink using HAL
-[✓] GPIO Input + Output – Button Controlled LED using HAL
-[ ] GPIO Output – Bare Metal
-[ ] GPIO Input – Bare Metal
-[ ] Button Interrupt
-[ ] External LED
-[ ] GPIO Register Programming
-[ ] Timers
-[ ] PWM
-[ ] ADC
-[ ] UART
-[ ] SPI
-[ ] I2C
-[ ] CAN
-[ ] FreeRTOS
+GPIO Output using HAL
+        ↓
+GPIO Input + Output using HAL  ← This Project
+        ↓
+GPIO Output using Registers
+        ↓
+GPIO Input using Registers
+        ↓
+GPIO Interrupts
+        ↓
+Timers
+        ↓
+PWM
+        ↓
+ADC
+        ↓
+UART
+        ↓
+SPI
+        ↓
+I2C
+        ↓
+CAN
+        ↓
+FreeRTOS
 ```
 
 ---
 
-# 📚 References
+## ⭐ Project Summary
 
-* STM32F401RE Datasheet
-* STM32F4 Reference Manual
-* STM32 NUCLEO-F401RE User Manual
-* STM32 HAL GPIO Documentation
-* STM32CubeIDE Documentation
+**Project:** Button Controlled LED
+**Microcontroller:** STM32F401RE
+**Board:** NUCLEO-F401RE
+**Framework:** STM32 HAL
+**Input:** PC13 — Blue User Button
+**Output:** PA5 — Green LED
+**Concept:** GPIO Input + GPIO Output + Polling
 
-````
-
-### One thing to remember
-
-Your **actual code** is:
-
-```c
-if (HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO_Port, BLUE_BUTTON_Pin))
-````
-
-and not:
-
-```c
-if (HAL_GPIO_ReadPin(...) == GPIO_PIN_SET)
-```
-
-I've explained the exact reason for that in the README under **“Why the `if` works without `== GPIO_PIN_SET`”**. That is worth keeping because it demonstrates that you're learning **C behavior + STM32 HAL**, rather than simply copying HAL code.
+> **Core idea:** Read the button state from PC13 and use that information to control the LED on PA5.
