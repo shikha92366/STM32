@@ -1,4 +1,3 @@
-<img width="756" height="545" alt="confi" src="https://github.com/user-attachments/assets/a32b191e-ba47-4542-aa30-1b97ef2c3f57" />
 
 # 🔘 Button Controlled LED using STM32 HAL
 
