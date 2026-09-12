@@ -1,8 +1,4 @@
-Yes — these screenshots give the **actual documentation trail** you followed. So the README should document the exact process you used, including **UM → DS → RM → memory map → base address → offset → register → bit**.
 
-For your `06_Bare_Metal_Programming/README.md`, use this:
-
-````markdown
 # STM32 Bare-Metal Programming
 
 This section focuses on understanding STM32 at the **register and memory level**.
