@@ -1,8 +1,3 @@
-in datasheet showing port A pin 5
-<img width="1411" height="842" alt="port a pin 5" src="https://github.com/user-attachments/assets/09ea982c-58aa-4dbe-890e-dbb398279d6d" />
-AHBI
-<img width="1155" height="475" alt="AHB1" src="https://github.com/user-attachments/assets/282de250-6fe2-4334-bf4a-5d8114dcb4f5" />
-
 
 
 
@@ -356,6 +351,10 @@ RM → Peripheral + Registers
 ---
 
 # 9. Memory Map
+
+<img width="947" height="213" alt="ld2" src="https://github.com/user-attachments/assets/788d75a5-c0f3-4ee7-b08b-0a387677c763" />
+<img width="1411" height="842" alt="port a pin 5" src="https://github.com/user-attachments/assets/09ea982c-58aa-4dbe-890e-dbb398279d6d" />
+<img width="1155" height="475" alt="AHB1" src="https://github.com/user-attachments/assets/282de250-6fe2-4334-bf4a-5d8114dcb4f5" />
 
 The STM32 memory map shows where different peripherals are located in the MCU address space.
 
