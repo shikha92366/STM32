@@ -62,6 +62,27 @@ LED
 ---
 <img width="2025" height="777" alt="ChatGPT Image Sep 16, 2026, 02_22_42 PM" src="https://github.com/user-attachments/assets/e41bdad5-24e8-469d-a432-196f1ebeb7c5" />
 
+## Steps to Turn ON an LED
+
+The following steps are required to turn ON an LED using STM32 GPIO:
+
+
+1. **Identify the GPIO Port and Pin**
+   - Identify the port and pin connected to the LED.
+   - Example: GPIOA, Pin 5 (PA5).
+
+2. **Enable the Peripheral Clock**
+   - Enable the clock for the GPIO peripheral using the RCC.
+
+3. **Configure the GPIO Mode**
+   - Configure the GPIO pin as an output.
+   - For register-level programming, configure the GPIOx_MODER register.
+
+4. **Set the GPIO Output State**
+   - Set the pin HIGH to turn ON the LED.
+   - Set the pin LOW to turn OFF the LED.
+   - Use the GPIOx_ODR or GPIOx_BSRR register.
+
 # 2. Logic Gates
 
 Logic gates are important because register programming involves manipulating individual bits.
