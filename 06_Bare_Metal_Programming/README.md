@@ -1,3 +1,5 @@
+<img width="1567" height="800" alt="gpio offset" src="https://github.com/user-attachments/assets/a697cf47-9575-4607-8df2-5e90b08d3dad" />
+
 
 
 
@@ -301,7 +303,7 @@ The Reference Manual is the main document used for register-level programming.
 
 The complete documentation flow used during this learning process is:
 
-<img width="947" height="213" alt="ld2" src="https://github.com/user-attachments/assets/788d75a5-c0f3-4ee7-b08b-0a387677c763" />
+
 
 ```text
 
@@ -355,6 +357,11 @@ RM → Peripheral + Registers
 <img width="947" height="213" alt="ld2" src="https://github.com/user-attachments/assets/788d75a5-c0f3-4ee7-b08b-0a387677c763" />
 <img width="1411" height="842" alt="port a pin 5" src="https://github.com/user-attachments/assets/09ea982c-58aa-4dbe-890e-dbb398279d6d" />
 <img width="1155" height="475" alt="AHB1" src="https://github.com/user-attachments/assets/282de250-6fe2-4334-bf4a-5d8114dcb4f5" />
+
+<img width="1296" height="470" alt="ABH1 address offset" src="https://github.com/user-attachments/assets/21e4a2ca-e8af-474b-ba97-fef1f562666a" /><img width="1567" height="800" alt="gpio offset" src="https://github.com/user-attachments/assets/398f3c6f-259e-4b43-b923-3a8819018ae2" />
+
+<img width="1567" height="800" alt="gpio offset" src="https://github.com/user-attachments/assets/a697cf47-9575-4607-8df2-5e90b08d3dad" />
+
 
 The STM32 memory map shows where different peripherals are located in the MCU address space.
 
