@@ -359,7 +359,7 @@ RM → Peripheral + Registers
 
 <img width="1296" height="470" alt="ABH1 address offset" src="https://github.com/user-attachments/assets/21e4a2ca-e8af-474b-ba97-fef1f562666a" /><img width="1567" height="800" alt="gpio offset" src="https://github.com/user-attachments/assets/398f3c6f-259e-4b43-b923-3a8819018ae2" />
 
-<img width="1567" height="800" alt="gpio offset" src="https://github.com/user-attachments/assets/a697cf47-9575-4607-8df2-5e90b08d3dad" />
+
 
 
 The STM32 memory map shows where different peripherals are located in the MCU address space.
