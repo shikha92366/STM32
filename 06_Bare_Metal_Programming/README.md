@@ -1,3 +1,5 @@
+in datasheet showing port A pin 5
+<img width="1411" height="842" alt="port a pin 5" src="https://github.com/user-attachments/assets/09ea982c-58aa-4dbe-890e-dbb398279d6d" />
 
 
 # STM32 Bare-Metal Programming
