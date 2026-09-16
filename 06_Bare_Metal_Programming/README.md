@@ -306,9 +306,10 @@ The Reference Manual is the main document used for register-level programming.
 
 The complete documentation flow used during this learning process is:
 
+<img width="947" height="213" alt="ld2" src="https://github.com/user-attachments/assets/788d75a5-c0f3-4ee7-b08b-0a387677c763" />
+
 ```text
 
-<img width="947" height="213" alt="ld2" src="https://github.com/user-attachments/assets/788d75a5-c0f3-4ee7-b08b-0a387677c763" />
 
 UM
 User Manual
