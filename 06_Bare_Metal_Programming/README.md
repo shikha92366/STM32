@@ -1,4 +1,5 @@
 
+
 # STM32 Bare-Metal Programming
 
 This section focuses on understanding STM32 at the **register and memory level**.
@@ -59,6 +60,7 @@ LED
 ```
 
 ---
+<img width="2025" height="777" alt="ChatGPT Image Sep 16, 2026, 02_22_42 PM" src="https://github.com/user-attachments/assets/e41bdad5-24e8-469d-a432-196f1ebeb7c5" />
 
 # 2. Logic Gates
 
