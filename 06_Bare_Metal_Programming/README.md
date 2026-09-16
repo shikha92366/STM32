@@ -581,6 +581,8 @@ For normal GPIO operation, the important step is enabling the GPIOA clock.
 ---
 
 # 17. GPIO Port Mode Register — MODER
+<img width="1115" height="622" alt="Screenshot 2026-09-16 211905" src="https://github.com/user-attachments/assets/6b465ca3-ebfd-484b-8564-fc73a4bdf889" />
+
 
 The GPIO mode register is:
 
