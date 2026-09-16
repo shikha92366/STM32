@@ -1,5 +1,10 @@
 in datasheet showing port A pin 5
 <img width="1411" height="842" alt="port a pin 5" src="https://github.com/user-attachments/assets/09ea982c-58aa-4dbe-890e-dbb398279d6d" />
+AHBI
+<img width="1155" height="475" alt="AHB1" src="https://github.com/user-attachments/assets/282de250-6fe2-4334-bf4a-5d8114dcb4f5" />
+
+
+
 
 
 # STM32 Bare-Metal Programming
@@ -298,9 +303,13 @@ The Reference Manual is the main document used for register-level programming.
 
 # 8. Documentation Flow
 
+
 The complete documentation flow used during this learning process is:
 
 ```text
+
+<img width="947" height="213" alt="ld2" src="https://github.com/user-attachments/assets/788d75a5-c0f3-4ee7-b08b-0a387677c763" />
+
 UM
 User Manual
    ↓
