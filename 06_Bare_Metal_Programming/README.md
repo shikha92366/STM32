@@ -1,9 +1,6 @@
 
 
 
-
-
-
 # STM32 Bare-Metal Programming
 
 This section focuses on understanding STM32 at the **register and memory level**.
@@ -473,6 +470,9 @@ is used to enable the GPIOA clock.
 ---
 
 # 14. RCC Register Address
+
+
+<img width="1497" height="740" alt="Screenshot 2026-09-16 210241" src="https://github.com/user-attachments/assets/178ba4e8-e697-4d6a-98c5-8c56622c4989" />
 
 The RCC base address is:
 
