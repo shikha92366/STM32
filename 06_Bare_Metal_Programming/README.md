@@ -1,4 +1,4 @@
-<img width="1452" height="811" alt="OUTPUT MODE" src="https://github.com/user-attachments/assets/28fd8959-8da4-4677-9b68-3320dd7f0b20" />
+
 
 
 
@@ -441,6 +441,8 @@ The STM32 documentation also shows GPIOA as an AHB1 peripheral.
 ---
 
 # 13. RCC AHB1 Peripheral Clock Enable
+<img width="445" height="810" alt="Screenshot 2026-09-16 205937" src="https://github.com/user-attachments/assets/0d6d3902-7403-4429-acb3-aa6e42bc908a" />
+
 
 Before using GPIOA, its peripheral clock needs to be enabled.
 
