@@ -1,4 +1,3 @@
-<img width="1567" height="800" alt="gpio offset" src="https://github.com/user-attachments/assets/a697cf47-9575-4607-8df2-5e90b08d3dad" />
 
 
 
