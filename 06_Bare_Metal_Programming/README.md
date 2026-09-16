@@ -357,24 +357,7 @@ Identify Port A, Pin 5 (PA5) – User LED (LD2) Connection
 <img width="1411" height="842" alt="port a pin 5" src="https://github.com/user-attachments/assets/09ea982c-58aa-4dbe-890e-dbb398279d6d" />
 Find GPIOA Peripheral on AHB1 Bus
 <img width="1155" height="475" alt="AHB1" src="https://github.com/user-attachments/assets/282de250-6fe2-4334-bf4a-5d8114dcb4f5" />
-Find RCC_AHB1RSTR Register Address Offset (0x10)
-
-**Why am I finding this?**
-To calculate the actual address of the RCC_AHB1RSTR register, which is needed to access the GPIOA reset control.
-
-**Remember the steps:**
-
-1. Find the **RCC base address** → `0x40023800`
-2. Find the **RCC_AHB1RSTR register offset** → `0x10`
-3. Calculate the register address:
-
-   `RCC Base Address + Register Offset`
-
-   `0x40023800 + 0x10 = 0x40023810`
-
-**Purpose:** To access the GPIOA peripheral reset register using its memory address.
-
-<img width="1296" height="470" alt="ABH1 address offset" src="https://github.com/user-attachments/assets/21e4a2ca-e8af-474b-ba97-fef1f562666a" /><img width="1567" height="800" alt="gpio offset" src="https://github.com/user-attachments/assets/398f3c6f-259e-4b43-b923-3a8819018ae2" />
+<img width="1567" height="800" alt="gpio offset" src="https://github.com/user-attachments/assets/398f3c6f-259e-4b43-b923-3a8819018ae2" />
 
 
 
