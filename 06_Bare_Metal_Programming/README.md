@@ -62,7 +62,7 @@ LED
 ```
 
 ---
-<img width="2025" height="777" alt="ChatGPT Image Sep 16, 2026, 02_22_42 PM" src="https://github.com/user-attachments/assets/e41bdad5-24e8-469d-a432-196f1ebeb7c5" />
+
 
 ## Steps to Turn ON an LED
 
