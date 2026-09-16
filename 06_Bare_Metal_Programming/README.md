@@ -1,3 +1,4 @@
+<img width="1452" height="811" alt="OUTPUT MODE" src="https://github.com/user-attachments/assets/28fd8959-8da4-4677-9b68-3320dd7f0b20" />
 
 
 
