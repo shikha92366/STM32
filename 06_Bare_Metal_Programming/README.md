@@ -858,6 +858,8 @@ I/O LOW → LED OFF
 Practical Demonstration
 
 The following video demonstrates the complete process of configuring PA5 as an output and turning ON the onboard LED using bare-metal programming.
+
+
 https://github.com/user-attachments/assets/fcd0b57b-683e-4956-bf01-252a69e3ffd5
 
 <img width="1901" height="1013" alt="Screenshot 2026-09-17 151555" src="https://github.com/user-attachments/assets/2fa25d9e-c3e2-4091-8909-4d82d4b2c207" />
