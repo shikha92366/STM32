@@ -1,4 +1,9 @@
-<img width="1902" height="893" alt="Screenshot 2026-09-17 150032" src="https://github.com/user-attachments/assets/48a797c0-1366-46d2-9172-6de207f57044" />
+
+
+https://github.com/user-attachments/assets/fcd0b57b-683e-4956-bf01-252a69e3ffd5
+
+
+
 
 
 
@@ -857,7 +862,9 @@ I/O LOW → LED OFF
 Practical Demonstration
 
 The following video demonstrates the complete process of configuring PA5 as an output and turning ON the onboard LED using bare-metal programming.
-<img width="1902" height="893" alt="Screenshot 2026-09-17 150032" src="https://github.com/user-attachments/assets/48a797c0-1366-46d2-9172-6de207f57044" />
+https://github.com/user-attachments/assets/fcd0b57b-683e-4956-bf01-252a69e3ffd5
+
+<img width="1901" height="1013" alt="Screenshot 2026-09-17 151555" src="https://github.com/user-attachments/assets/2fa25d9e-c3e2-4091-8909-4d82d4b2c207" />
 # Bare-Metal GPIOA PA5 LED Configuration
 
 This project configures **Port A, Pin 5 (PA5)** as an output and turns ON the onboard LED using direct register access.
