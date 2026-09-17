@@ -509,7 +509,7 @@ RCC_AHB1ENR = 0x40023830
 ---
 
 # 15. GPIOA Clock Enable
-
+<img width="1311" height="390" alt="Screenshot 2026-09-17 140302" src="https://github.com/user-attachments/assets/b66d723e-2c60-4474-8a95-911ebea6dc6c" />
 The GPIOA clock-enable bit is:
 
 ```text
