@@ -1,3 +1,4 @@
+<img width="987" height="522" alt="Screenshot 2026-09-17 144930" src="https://github.com/user-attachments/assets/676918dd-3987-456b-aee6-a28c5d534afb" />
 
 
 
@@ -783,6 +784,7 @@ The `01` value must be placed at the correct bit position using a left shift.
 ---
 
 # 20. GPIO Output Data Register — ODR
+<img width="987" height="522" alt="Screenshot 2026-09-17 144930" src="https://github.com/user-attachments/assets/676918dd-3987-456b-aee6-a28c5d534afb" />
 
 After configuring PA5 as an output, the output state must be controlled.
 
