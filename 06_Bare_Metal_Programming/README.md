@@ -1,3 +1,4 @@
+<img width="1902" height="893" alt="Screenshot 2026-09-17 150032" src="https://github.com/user-attachments/assets/48a797c0-1366-46d2-9172-6de207f57044" />
 
 
 
@@ -853,6 +854,141 @@ I/O LOW → LED OFF
 ---
 
 # 22. Complete Register-Level Flow
+<img width="1902" height="893" alt="Screenshot 2026-09-17 150032" src="https://github.com/user-attachments/assets/48a797c0-1366-46d2-9172-6de207f57044" />
+# Bare-Metal GPIOA PA5 LED Configuration
+
+This project configures **Port A, Pin 5 (PA5)** as an output and turns ON the onboard LED using direct register access.
+
+## 1. Enable GPIOA Clock
+
+```c
+uint32_t *pRCCGPIOA = (uint32_t *)(0x40023800 + 0x30);
+
+*pRCCGPIOA |= 0x01;
+```
+
+### Explanation
+
+* `0x40023800` → RCC base address.
+* `0x30` → AHB1 peripheral clock enable register offset.
+* `0x40023830` → RCC_AHB1ENR register address.
+* `0x01` → Sets bit 0 (`GPIOAEN`).
+* This enables the clock for GPIOA.
+
+**Purpose:** GPIOA must be clock-enabled before accessing its registers.
+
+---
+
+## 2. Configure PA5 as Output
+
+```c
+uint32_t *pGPIOAMode = (uint32_t *)(0x40020000);
+
+*pGPIOAMode &= 0xFFFFF3FF;
+*pGPIOAMode |= 0x01 << 10;
+```
+
+### Explanation
+
+* `0x40020000` → GPIOA base address.
+* `MODER` offset → `0x00`.
+* PA5 uses MODER bits **11:10**.
+
+### Step 1: Clear PA5 Mode Bits
+
+```c
+*pGPIOAMode &= 0xFFFFF3FF;
+```
+
+The mask clears bits 11 and 10:
+
+```text
+MODER[11:10] = 00
+```
+
+This removes the previous configuration.
+
+### Step 2: Set Output Mode
+
+```c
+*pGPIOAMode |= 0x01 << 10;
+```
+
+* Shifts `1` to bit 10.
+* Bit 11 remains `0`.
+* The final configuration becomes:
+
+```text
+MODER[11:10] = 01
+```
+
+According to the STM32 GPIO MODER configuration, `01` selects **general-purpose output mode**.
+
+---
+
+## 3. Set PA5 HIGH
+
+```c
+uint32_t *pGPIOAState = (uint32_t *)(0x40020000 + 0x14);
+
+*pGPIOAState |= 0x01 << 5;
+```
+
+### Explanation
+
+* `0x40020000` → GPIOA base address.
+* `0x14` → GPIOA output data register (ODR) offset.
+* `0x40020014` → GPIOA_ODR address.
+* `0x01 << 5` → Sets bit 5.
+* PA5 is driven HIGH, turning ON the onboard LED (LD2).
+
+---
+
+## Complete Code
+
+```c
+#include <stdint.h>
+
+int main(void)
+{
+    /* Enable GPIOA peripheral clock */
+    uint32_t *pRCCGPIOA = (uint32_t *)(0x40023800 + 0x30);
+    *pRCCGPIOA |= 0x01;
+
+    /* Configure PA5 as output */
+    uint32_t *pGPIOAMode = (uint32_t *)(0x40020000);
+
+    *pGPIOAMode &= 0xFFFFF3FF;
+    *pGPIOAMode |= 0x01 << 10;
+
+    /* Set PA5 HIGH */
+    uint32_t *pGPIOAState = (uint32_t *)(0x40020000 + 0x14);
+    *pGPIOAState |= 0x01 << 5;
+
+    /* Loop forever */
+    for (;;);
+}
+```
+
+### Execution Flow
+
+```text
+RCC Base Address
+       ↓
+Enable GPIOA Clock
+       ↓
+GPIOA Base Address
+       ↓
+Configure PA5 as Output
+       ↓
+Access GPIOA ODR
+       ↓
+Set PA5 HIGH
+       ↓
+LED ON
+```
+
+**Key concept:** Register-level programming directly controls the STM32 hardware by accessing peripheral registers through their memory addresses.
 
 The complete process is:
 
