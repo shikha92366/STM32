@@ -854,6 +854,9 @@ I/O LOW → LED OFF
 ---
 
 # 22. Complete Register-Level Flow
+Practical Demonstration
+
+The following video demonstrates the complete process of configuring PA5 as an output and turning ON the onboard LED using bare-metal programming.
 <img width="1902" height="893" alt="Screenshot 2026-09-17 150032" src="https://github.com/user-attachments/assets/48a797c0-1366-46d2-9172-6de207f57044" />
 # Bare-Metal GPIOA PA5 LED Configuration
 
