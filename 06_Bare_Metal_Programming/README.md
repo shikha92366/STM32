@@ -647,6 +647,8 @@ The available modes are:
 
 # 19. PA5 Mode Configuration
 
+<img width="1346" height="442" alt="Screenshot 2026-09-17 142024" src="https://github.com/user-attachments/assets/d2fb1e09-725d-42f1-9672-af3d6b53c7b0" />
+
 The LED is connected to:
 
 ```text
