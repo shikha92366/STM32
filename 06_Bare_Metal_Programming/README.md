@@ -647,7 +647,94 @@ The available modes are:
 
 # 19. PA5 Mode Configuration
 
-<img width="1346" height="442" alt="Screenshot 2026-09-17 142024" src="https://github.com/user-attachments/assets/d2fb1e09-725d-42f1-9672-af3d6b53c7b0" />
+<img width="1277" height="400" alt="Screenshot 2026-09-17 142425" src="https://github.com/user-attachments/assets/00c89f3f-352d-45d1-90ca-99c871a6aab7" />
+## Configure PA5 as Output Using GPIOA MODER Register
+
+The following code configures **Port A, Pin 5 (PA5)** as a general-purpose output using register-level programming.
+
+### Code
+
+```c
+*pGPIOAMode &= 0xFFFFF3FF;
+*pGPIOAMode |= (0x01 << 10);
+```
+
+### Step 1: Clear PA5 Mode Bits
+
+```c
+*pGPIOAMode &= 0xFFFFF3FF;
+```
+
+The `MODER` register uses **2 bits for each GPIO pin**.
+
+For PA5:
+
+```text
+Pin number × 2 = 5 × 2 = 10
+```
+
+Therefore, PA5 uses **bits 11:10**.
+
+The mask:
+
+```text
+0xFFFFF3FF
+```
+
+In binary:
+
+```text
+1111 1111 1111 1111 1111 0011 1111 1111
+                              ↑↑
+                          Bits 11:10
+```
+
+Bits 11 and 10 are cleared to `00` using the bitwise AND operation.
+
+**Purpose:** Remove the previous configuration of PA5 before setting the required mode.
+
+### Step 2: Set PA5 to Output Mode
+
+```c
+*pGPIOAMode |= (0x01 << 10);
+```
+
+Here:
+
+* `0x01` represents the value `1`.
+* `<< 10` shifts the value 10 positions to the left.
+* This sets **bit 10 to 1**.
+* Bit 11 remains `0` because it was cleared in the previous step.
+
+Thus:
+
+```text
+MODER[11:10] = 01
+```
+
+### GPIO MODER Configuration
+
+| MODER Bits | Configuration          |
+| ---------- | ---------------------- |
+| `00`       | Input                  |
+| `01`       | General-purpose output |
+| `10`       | Alternate function     |
+| `11`       | Analog                 |
+
+### Final Result
+
+```text
+PA5 MODER[11:10] = 01
+```
+
+**PA5 is configured as a general-purpose output, allowing control of the onboard LED (LD2).**
+
+### Key Concept
+
+> **First clear the target bits, then set the required configuration.**
+
+This approach is called **read-modify-write**, because the register's existing values are preserved except for the specific bits being modified.
+
 
 The LED is connected to:
 
