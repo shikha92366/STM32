@@ -1,6 +1,4 @@
-Here's a professional **README.md** for your next STM32 learning repository topic. You can copy and paste it directly into GitHub.
 
-````markdown
 # 06_SFR_Debugging
 
 ## 📌 Overview
