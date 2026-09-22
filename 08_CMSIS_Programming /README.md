@@ -441,6 +441,3 @@ Control LED
 
 This will introduce GPIO input handling and reading the state of a peripheral pin. The source material identifies button-controlled LED operation as the next step after the CMSIS LED example. 
 
-
-* [ ] DMA
-* [ ] RTOS
