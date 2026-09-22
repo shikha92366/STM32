@@ -1,5 +1,5 @@
 
-# 09_UART_Communication 🚀
+# 10_UART_Communication 🚀
 
 > A practical and beginner-friendly guide to **UART/USART communication on STM32**, progressing from basic concepts to actual serial communication and debugging.
 
