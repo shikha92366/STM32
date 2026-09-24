@@ -1,5 +1,5 @@
 
-# 🐛 11 — STM32 Debugging: Live Expressions & SWV
+# 🐛 12 — STM32 Debugging: Live Expressions & SWV
 
 > **Stop guessing what your STM32 is doing. Start watching it. 🔍**
 
